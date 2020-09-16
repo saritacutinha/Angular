@@ -1,1 +1,44 @@
-<p>contact-form works!</p>
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      required
+      minlength="3"
+      maxlength="10"
+      pattern="Sarita"
+      ngModel
+      name="firstName"
+      #firstName="ngModel"
+      (change)="log(firstName)"
+      type="text"
+      id="firstName"
+      class="form-control"
+    />
+    <div class="alert alert-danger" *ngIf="firstName.touched">
+      <div *ngIf="firstName.errors.required">First Name is required.</div>
+      <div *ngIf="firstName.errors.minlength">
+        The name should atleast be
+        {{ firstName.errors.minlength.requiredLength }} chars.
+      </div>
+      <div *ngIf="firstName.errors.maxlength">
+        The name should atmost be 10 chars.
+      </div>
+      <div *ngIf="firstName.errors.pattern">
+        The name is not like the pattern specified.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comments</label>
+    <textarea
+      ngModel
+      name="comment"
+      id="comment"
+      cols="30"
+      rows="10"
+      class="form-control"
+    ></textarea>
+  </div>
+  <button class="btn btn-primary">Submit</button>
+</form>
