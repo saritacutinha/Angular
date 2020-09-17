@@ -36,9 +36,12 @@
     </div>
     <div class="checkBox">
       <label></label>
-      <input type="checkbox" ngModel name="isMoneyBack" />30 Day Money Back
-      guarantee
+      <input type="checkbox" ngModel name="hasGuarantee" />
+      30 Day Money Back guarantee
     </div>
   </div>
+  <p>
+    {{ f.value | json }}
+  </p>
   <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
 </form>
